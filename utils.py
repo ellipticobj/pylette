@@ -11,4 +11,3 @@ you get to place a bet, shown in the list below:
 
 '''
         )
-    
