@@ -1,4 +1,4 @@
-from logic import *
+import logic, utils
 
 print("roulette game!!! yippee gambling!!!!")
 
@@ -8,6 +8,7 @@ print("roulette game!!! yippee gambling!!!!")
 balance = 1000
 
 while True:
+    number = 0
     payout = 0
     # get user bet
     betkind = input(
@@ -20,7 +21,7 @@ while True:
 [1-4/q/?] > '''
     ).lower()
     
-    if betkind == 'q':
+    if betkind == 'q': # quit
         print(f"you will be quitting the game with ${balance}")
         suretoquit = input("are you sure you want to quit [y/N]? ")
         print()
@@ -30,6 +31,11 @@ while True:
         else:
             print("continuing the game...")
             continue
+    
+    if betkind == "?": # help
+        utils.help()
+        input("ENTER to continue ")
+        continue
     
     if betkind not in {'1', '2', '3', '4', '5', 'q', '?'}:
         print("please input a valid betkind.")
@@ -67,6 +73,12 @@ while True:
             
         print(f"you bet ${bet} on {choice}")
         print()
+        
+        number = utils.spin()
+        
+        if utils.checkeven(number) == choice:
+            payout = bet * 2
+        
 
     elif betkind == '2': # red/black
         while True:
@@ -78,6 +90,12 @@ while True:
             
         print(f"you bet ${bet} on {choice}")
         print()
+        
+        number = utils.spin()
+        
+        if utils.checkcolor(number) == choice:
+            payout = bet * 2
+
 
     elif betkind == '3': # low/high
         while True:
@@ -86,6 +104,12 @@ while True:
                 print("please input a valid choice.")
                 continue
             break
+        
+        number = utils.spin()
+        
+        if utils.checklow(number) == choice:
+            payout = bet * 2
+        
 
     elif betkind == '4': # dozens
         while True:
@@ -101,33 +125,24 @@ while True:
                 print("please input a valid choice.")
                 continue
             break
+        
+        number = utils.spin()
+        
+        if utils.checkdozens(number) == choice:
+            payout = bet * 3
 
     elif betkind == '5': # single number
-        pass
-
-    elif betkind == "?": # help
-        continue
-    
-
-    print("spinning the wheel...")
-    number = getnumber()
-    print(f"the number is: {number}")
-    
-    if betkind == '1': # even/odd
-        betkind = input("")
-
-    elif betkind == '2': # red/black
-        pass
-
-    elif betkind == '3': # low/high
-        pass
-
-    elif betkind == '4': # dozens
-        pass
-
-    elif betkind == '5': # single number
-        pass
-    
+        while True:
+            choice = input('choose a number [00, 0-36]: ').lower().strip()
+            if not choice.isdigit() or not(choice in logic.numbers or choice == '00'):
+                print("please input a valid choice")
+                continue
+            break
+        
+        number = utils.spin()
+        
+        if number == int(choice):
+            payout = bet * 36
     
     if payout > 0:
         print(f"you won ${payout}!!!!!")
@@ -136,7 +151,14 @@ while True:
         print("you lost this bet...")
         balance -= bet
         print("${bet} deducted from your balance")
-        
-    print(f"your balance is now ${balance}")
-    print()
-    print()
+    
+    print(f"your balance is ${balance}")
+    
+print(f"your balance is ${balance}")
+if balance > 1000:
+    print(f"you won ${balance-1000}!!")
+elif balance < 1000:
+    print(f"you lost ${1000-balance}...")
+else:
+    print(f"you won nothing")
+    
