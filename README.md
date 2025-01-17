@@ -13,6 +13,11 @@ git clone https://github.com/ellipticobj/pylette.git
 cd ./pylette
 ```
 
+install dependancies
+```bash
+pip3 install -r requirements.txt
+```
+
 then run main.py to start  
 ```bash
 python main.py
