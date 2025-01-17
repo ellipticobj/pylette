@@ -120,9 +120,9 @@ while True:
         while True:
             choice = input(
                 '''choose:
-1. 1-12
-2. 13-24
-3. 25-36
+[1]. 1-12
+[2]. 13-24
+[3]. 25-36
 > '''
             ).lower()
             if choice not in {'1', '2', '3'}:

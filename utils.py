@@ -2,7 +2,7 @@ import logic
 
 def help():
     print(
-'''
+f'''
 rules of the game:
 
 you start with a balance of 1000
@@ -11,6 +11,28 @@ every round, a number is randomly generated.
 
 you get to place a bet, shown in the list below:
 
+even or odd: 
+you bet whether the number will be even or odd
+the payout for this is 2x (you get your bet if you win)
+
+low or high:
+you bet whether the number will be in the range 1-12 or 13-36
+the payout for this is 2x
+
+red or black:
+you bet whether the number will be red or black
+the payout for this is 2x
+
+red numbers: {logic.rednumbers}
+black numbers: {logic.blacknumbers}
+
+dozens:
+you bet whether the number will be in the ranges 1-12, 13-24 or 25-36
+the payout is 3x (you win 2x what you bet)
+
+single number:
+you bet on a single number
+the payout is 36x
 '''
         )
     
