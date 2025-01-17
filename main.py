@@ -49,6 +49,7 @@ while True:
         bet = input('amount to bet (no decimals!!)\n> ')
         if not bet.isdigit():
             print("please input an integer.")
+            print()
             continue
         bet = int(bet)
         break
@@ -68,6 +69,7 @@ while True:
             choice = input("[even] or [odd]?\n>").lower()
             if choice not in {'even', 'odd'}:
                 print("please input a valid choice.")
+                print()
                 continue
             break
             
@@ -85,6 +87,7 @@ while True:
             choice = input("[red] or [black]?\n>").lower()
             if choice not in {'red', 'black'}:
                 print("please input a valid choice.")
+                print()
                 continue
             break
             
@@ -102,6 +105,7 @@ while True:
             choice = input("[low] or [high]?\n>").lower()
             if choice not in {'low', 'high'}:
                 print("please input a valid choice.")
+                print()
                 continue
             break
         
@@ -123,6 +127,7 @@ while True:
                            ).lower()
             if choice not in {'1', '2', '3'}:
                 print("please input a valid choice.")
+                print()
                 continue
             break
         
@@ -136,6 +141,7 @@ while True:
             choice = input('choose a number [00, 0-36]: ').lower().strip()
             if not choice.isdigit() or not(choice in logic.numbers or choice == '00'):
                 print("please input a valid choice")
+                print()
                 continue
             break
         
